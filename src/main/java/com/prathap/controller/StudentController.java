@@ -1,5 +1,7 @@
 package com.prathap.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +20,9 @@ public class StudentController {
 	private StudentService studentService;
 	
 	@RequestMapping(value="/save", method=RequestMethod.POST, consumes="application/json")
-	public Student save(@RequestBody Student student) {
+	public void save(@RequestBody Student student) {
 		// TODO Auto-generated method stub
-		return studentService.save(student);
+		studentService.save(student);
 	}
 
 	@RequestMapping(value="/get/{id}", method=RequestMethod.GET)

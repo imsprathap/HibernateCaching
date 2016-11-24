@@ -5,7 +5,7 @@ import java.util.List;
 import com.prathap.entity.Student;
 
 public interface StudentService {
-	public Student save(Student student);
+	public void save(Student student);
 
 	public Object findById(int id);
 

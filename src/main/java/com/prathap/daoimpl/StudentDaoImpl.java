@@ -18,8 +18,17 @@ public class StudentDaoImpl implements StudentDao{
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	/*@Override
+	@CachePut(value="students", key="'findByAll'")
+	public List<Student> save(Student student) {
+		entityManager.persist(student);
+		List<Student> studentList = new ArrayList<>();
+		studentList = findByAll();
+		return studentList;
+	}*/
+	
 	@Override
-	@CachePut(value="student", key="#result.id")
+	@CachePut(value="student", key="#student.id")
 	public Student save(Student student) {
 		entityManager.persist(student);
 		return student;
@@ -42,7 +51,8 @@ public class StudentDaoImpl implements StudentDao{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	@Cacheable("students")
+	//@Cacheable(value="students", key = "#root.method.name")
+	@Cacheable(value="students")
 	public List<Student> findByAll() {
 		System.out.println("Inside findAll");
 		return entityManager.createQuery("FROM " + Student.class.getName()).getResultList();

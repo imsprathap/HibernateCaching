@@ -19,10 +19,9 @@ public class StudentServiceImpl implements StudentService{
 	
 	@Override
 	@Transactional
-	public Student save(Student student) {
+	public void save(Student student) {
 		// TODO Auto-generated method stub
-		Student savedStudent = studentDao.save(student);
-		return savedStudent;
+		studentDao.save(student);
 	}
 
 	@Override
